@@ -7,6 +7,10 @@ all_from 'lib/Plack/Builder/Conditions.pm';
 tests 't/*.t';
 author_tests 'xt';
 
+requires 'Plack', 0.9941;
+requires 'Net::CIDR::Lite';
+requires 'List::MoreUtils';
+
 test_requires 'Test::More';
 auto_set_repository;
 auto_include;
