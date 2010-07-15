@@ -8,3 +8,6 @@ __DATA__
 Masahiro Nagano
 kazeburo {at} gmail.com
 Plack::Builder::Conditionals
+CIDR
+addr
+middleware

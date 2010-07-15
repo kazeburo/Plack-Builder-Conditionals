@@ -176,6 +176,66 @@ Plack::Builder::Conditionals - Plack::Builder extension
 
 Plack::Builder::Conditionals is..
 
+=head1 FUNCTIONS
+
+=over 4
+
+=item match_if
+
+  enable match_if addr('127.0.0.1'), "Plack::Middleware::ReverseProxy";
+  enable match_if sub { $_[0]->{REMOTE_ADDR} eq '127.0.0.1' }, "Plack::Middleware::ReverseProxy";
+
+As like Plack::Builder's enable_if enable middleware if given conditions return true
+
+=item addr
+
+  addr('127.0.0.1');
+  addr([qw!192.168.0.0/24 127.0.0.1!]);
+  addr('!','127.0.0.1');
+
+return true if REMOTE_ADDR is found in the CIDR range. If first argument is '!', return the opposite result
+
+=item path
+
+  path('/')
+  path(qr!^/(\w+)/!)
+  path('!', qr!^/private!)
+
+matching PATH_INFO
+
+=item method
+
+  method('GET')
+  method(qr!/^(get|head)$/!)
+  method('!','GET')
+
+=item header
+
+  header('User-Agent',qr/iphone/)
+  header('If-Modified-Since') #exists check
+  header('!', 'User-Agent',qr/MSIE/)
+
+=item all
+
+  all( method('GET'), path(qr!^/static!) )
+
+return true if all conditions are return true
+
+=item any
+
+  any( path(qr!^/static!), path('/favicon.ico') )
+
+return true if any condition return true
+
+=back
+
+=head1 EXPORT
+
+  use Plack::Builder::Conditionals -prefx => 'c';
+  # exports "c_match_if, c_addr, c_path, c_method, c_header, c_any, c_all"
+  
+you can add selected prefix to export functions
+
 =head1 AUTHOR
 
 Masahiro Nagano E<lt>kazeburo {at} gmail.comE<gt>
