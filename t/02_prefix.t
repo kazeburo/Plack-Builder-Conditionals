@@ -1,7 +1,7 @@
 use strict;
 use Test::More tests => 2;
 
-use Plack::Builder::Conditions -prefix => 's';
+use Plack::Builder::Conditionals -prefix => 's';
 
 ok( s_path('/')->({ PATH_INFO => '/' }) );
 

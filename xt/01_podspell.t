@@ -7,4 +7,4 @@ all_pod_files_spelling_ok('lib');
 __DATA__
 Masahiro Nagano
 kazeburo {at} gmail.com
-Plack::Builder::Conditions
+Plack::Builder::Conditionals

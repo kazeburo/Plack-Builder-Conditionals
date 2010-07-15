@@ -3,7 +3,7 @@ use Test::More tests => 4;
 
 use Plack::Builder;
 use Plack::Test;
-use Plack::Builder::Conditions;
+use Plack::Builder::Conditionals;
 use Plack::Util;
 
 my $app = builder {

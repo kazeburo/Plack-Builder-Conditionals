@@ -1,4 +1,4 @@
-package Plack::Builder::Conditions;
+package Plack::Builder::Conditionals;
 
 use strict;
 use warnings;
@@ -147,12 +147,12 @@ __END__
 
 =head1 NAME
 
-Plack::Builder::Conditions - Plack::Builder extentions
+Plack::Builder::Conditionals - Plack::Builder extension
 
 =head1 SYNOPSIS
 
   use Plack::Builder;
-  use Plack::Builder::Conditions;
+  use Plack::Builder::Conditionals;
   # exports "match_if, addr, path, method, header, any, all"
 
   builder {
@@ -168,13 +168,13 @@ Plack::Builder::Conditions - Plack::Builder extentions
       $app;
   };
 
-  use Plack::Builder::Conditions -prefx => 'c';
+  use Plack::Builder::Conditionals -prefx => 'c';
   # exports "c_match_if, c_addr, c_path, c_method, c_header, c_any, c_all"
 
 
 =head1 DESCRIPTION
 
-Plack::Builder::Conditions is..
+Plack::Builder::Conditionals is..
 
 =head1 AUTHOR
 

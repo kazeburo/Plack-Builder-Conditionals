@@ -1,7 +1,7 @@
 use strict;
 use Test::More tests => 19;
 
-use Plack::Builder::Conditions;
+use Plack::Builder::Conditionals;
 
 ok( addr('192.168.2.0/24')->({ REMOTE_ADDR => '192.168.2.1' }) );
 ok( addr(['192.168.2.0/24','127.0.0.1'])->({ REMOTE_ADDR => '192.168.2.1' }) );

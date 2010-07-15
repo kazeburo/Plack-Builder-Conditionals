@@ -1,6 +1,6 @@
 use inc::Module::Install;
-name 'Plack-Builder-Conditions';
-all_from 'lib/Plack/Builder/Conditions.pm';
+name 'Plack-Builder-Conditionals';
+all_from 'lib/Plack/Builder/Conditionals.pm';
 
 # requires '';
 
