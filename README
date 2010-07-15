@@ -1,11 +1,11 @@
-This is Perl module Plack::Builder::Conditions.
+This is Perl module Plack::Builder::Conditionals.
 
 INSTALLATION
 
-Plack::Builder::Conditions installation is straightforward. If your CPAN shell is set up,
+Plack::Builder::Conditionals installation is straightforward. If your CPAN shell is set up,
 you should just be able to do
 
-    % cpan Plack::Builder::Conditions
+    % cpan Plack::Builder::Conditionals
 
 Download it, unpack it, then build it as per the usual:
 
@@ -18,9 +18,9 @@ Then install it:
 
 DOCUMENTATION
 
-Plack::Builder::Conditions documentation is available as in POD. So you can do:
+Plack::Builder::Conditionals documentation is available as in POD. So you can do:
 
-    % perldoc Plack::Builder::Conditions
+    % perldoc Plack::Builder::Conditionals
 
 to read the documentation online with your favorite pager.
 
