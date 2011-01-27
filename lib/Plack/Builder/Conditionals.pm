@@ -106,13 +106,7 @@ sub method {
         $not = $_[0];
         $method = $_[1];
     }
-
-    if ( ref $method && ref $method eq 'Regexp' ) {
-        my $re = "$method";
-        $re =~ s/\?([^-]*)(\-[^i]*)i([^:]*?:)/?i$1$2$3/;
-        $method = qr/$re/i;
-    }
-    elsif ( defined $method )  {
+    if ( defined $method && ! ref $method )  {
         $method = uc $method;
     }
     _match( 'REQUEST_METHOD', ( @_ == 1 ) ? ($method) : ($not, $method) );
@@ -206,7 +200,7 @@ matching PATH_INFO
 =item method
 
   method('GET')
-  method(qr!/^(get|head)$/!)
+  method(qr/^(get|head)$/i)
   method('!','GET')
 
 =item header
