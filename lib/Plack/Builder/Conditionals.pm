@@ -242,6 +242,8 @@ Masahiro Nagano E<lt>kazeburo {at} gmail.comE<gt>
 
 =head1 SEE ALSO
 
+L<Plack::Builder>
+
 =head1 LICENSE
 
 This library is free software; you can redistribute it and/or modify
