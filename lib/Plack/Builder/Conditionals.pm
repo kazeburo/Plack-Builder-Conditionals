@@ -7,14 +7,14 @@ use List::MoreUtils qw//;
 use Plack::Util;
 use Plack::Middleware::Conditional;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 sub import {
     my $class = shift;
     my $caller = caller;
     my %args = @_;
 
-    my @EXPORT = qw/match_if addr path method header any all/;
+    my @EXPORT = qw/match_if addr path method header browser any all/;
 
     no strict 'refs';
     my $i=0;
@@ -119,6 +119,11 @@ sub header {
     _match( $header, @_ );
 }
 
+sub browser {
+    my $header = shift;
+    _match( "HTTP_USER_AGENT", @_ );
+}
+
 sub any {
     my @match = @_;
     return sub {
@@ -147,7 +152,7 @@ Plack::Builder::Conditionals - Plack::Builder extension
 
   use Plack::Builder;
   use Plack::Builder::Conditionals;
-  # exports "match_if, addr, path, method, header, any, all"
+  # exports "match_if, addr, path, method, header, browser, any, all"
 
   builder {
       enable match_if addr(['192.168.0.0/24','127.0.0.1']),
@@ -208,6 +213,13 @@ matching PATH_INFO
   header('User-Agent',qr/iphone/)
   header('If-Modified-Since') #exists check
   header('!', 'User-Agent',qr/MSIE/)
+
+=item browser
+
+  browser(qr/\bMSIE (7|8)/)
+  browser('!',qr!^Mozilla/4!);
+
+Shortcut for header('User-Agent')
 
 =item all
 

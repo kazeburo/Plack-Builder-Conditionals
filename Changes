@@ -1,4 +1,7 @@
 Revision history for Perl extension Plack::Builder::Conditionals
 
+0.02    Wed Feb 2 13:04:27 2011
+        - added browser function for checking user-agent
+
 0.01    Wed Jul 14 23:49:58 2010
         - original version
