@@ -99,17 +99,21 @@ sub path {
 sub method {
     my $not;
     my $method;
+    if ( $_[0] eq '!' ) {
+        $not = shift;
+    }
+    return sub { 1 } unless @_;
     if ( @_ == 1 ) {
         $method = $_[0];
     }
     else {
-        $not = $_[0];
-        $method = $_[1];
+        my $alternatives = join '|', map { quotemeta($_) } @_;
+        $method = qr/^(?:$alternatives)$/i;
     }
     if ( defined $method && ! ref $method )  {
         $method = uc $method;
     }
-    _match( 'REQUEST_METHOD', ( @_ == 1 ) ? ($method) : ($not, $method) );
+    _match( 'REQUEST_METHOD', grep { defined } $not, $method );
 }
 
 sub header {
@@ -206,7 +210,10 @@ matching PATH_INFO
 
   method('GET')
   method(qr/^(get|head)$/i)
+  method(qw(GET HEAD))
   method('!','GET')
+  method('!', qr/^(post|put)$/i)
+  method('!', qw(POST PUT))
 
 =item header
 

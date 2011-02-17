@@ -1,5 +1,5 @@
 use strict;
-use Test::More tests => 21;
+use Test::More tests => 23;
 
 use Plack::Builder::Conditionals;
 
@@ -18,7 +18,9 @@ ok( method('GET')->({ REQUEST_METHOD => 'GET' }) );
 ok( method('get')->({ REQUEST_METHOD => 'GET' }) );
 ok( method('!','post')->({ REQUEST_METHOD => 'GET' }) );
 ok( method(qr/^(get|head)$/i)->({ REQUEST_METHOD => 'GET' }) );
+ok( method(qw(GET HEAD))->({ REQUEST_METHOD => 'HEAD' }) );
 ok( method('!',qr/^(post|put)$/i)->({ REQUEST_METHOD => 'GET' }) );
+ok( method('!',qw(POST PUT))->({ REQUEST_METHOD => 'GET' }) );
 
 ok( header('X-Foo')->({  HTTP_X_FOO => '100' }) );
 ok( ! header('X-Foo')->({  HTTP_X_BAA => '100' }) );
