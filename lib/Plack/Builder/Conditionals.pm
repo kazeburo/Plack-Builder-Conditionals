@@ -99,7 +99,7 @@ sub path {
 sub method {
     my $not;
     my $method;
-    if ( $_[0] eq '!' ) {
+    if ( defined $_[0] && $_[0] eq '!' ) {
         $not = shift;
     }
     return sub { 1 } unless @_;
