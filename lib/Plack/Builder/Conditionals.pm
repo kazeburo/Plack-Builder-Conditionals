@@ -54,13 +54,27 @@ sub addr {
     }
 
     my @ip = ref $ip ? @$ip : ($ip);
-    my $cidr = Net::CIDR::Lite->new();
-    $cidr->add_any( $_ ) for @ip;
+    my $cidr4 = Net::CIDR::Lite->new();
+    my $cidr6 = Net::CIDR::Lite->new();
+    for my $ip ( @ip ) {
+        if ( $ip =~ m!:! ) {
+            $cidr6->add_any($ip);
+        }
+        else {
+            $cidr4->add_any($ip);
+        }
+    }
 
     return sub {
         my $env = shift;
-        my $ret = $cidr->find($env->{REMOTE_ADDR});
-        return (defined $not && $not eq '!')  ? !$ret : $ret;
+        my $find_ip;
+        if ( $env->{REMOTE_ADDR} =~ m!:! ) {
+            $find_ip = $cidr6->find($env->{REMOTE_ADDR});
+        }
+        else {
+            $find_ip = $cidr4->find($env->{REMOTE_ADDR});
+        }
+        return (defined $not && $not eq '!')  ? !$find_ip : $find_ip;
     };
 }
 
@@ -162,7 +176,7 @@ Plack::Builder::Conditionals - Plack::Builder extension
       enable match_if addr(['192.168.0.0/24','127.0.0.1']),
           "Plack::Middleware::ReverseProxy";
 
-      enable match_if all( path(qr!^/private!), addr( '!', [qw!127.0.0.1!] ) ),
+      enable match_if all( path(qr!^/private!), addr( '!', [qw!127.0.0.1 ::1!] ) ),
           "Plack::Middleware::Auth::Basic", authenticator => \&authen_cb;
 
       enable match_if sub { my $env = shift; $env->{HTTP_X_ENABLE_FRAMEWORK} },
@@ -193,10 +207,11 @@ As like Plack::Builder's enable_if enable middleware if given conditions return 
 =item addr
 
   addr('127.0.0.1');
-  addr([qw!192.168.0.0/24 127.0.0.1!]);
+  addr([qw!192.168.0.0/24 127.0.0.1 ::1!]);
   addr('!','127.0.0.1');
 
-return true if REMOTE_ADDR is found in the CIDR range. If first argument is '!', return the opposite result
+return true if REMOTE_ADDR is found in the CIDR range. If first argument is '!', return the opposite result.
+This function supports IPv6 addresses
 
 =item path
 
