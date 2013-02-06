@@ -1,5 +1,8 @@
 Revision history for Perl extension Plack::Builder::Conditionals
 
+0.04    Wed Feb 6 10:21:34 2013
+       - supports IPv6 in addr function
+
 0.03    Fri Feb 18 14:35:36 2011
         - add method(qw(FOO BAR)) as alternative to method(qr/.../) (hdp)
 

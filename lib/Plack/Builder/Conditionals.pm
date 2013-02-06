@@ -7,7 +7,7 @@ use List::MoreUtils qw//;
 use Plack::Util;
 use Plack::Middleware::Conditional;
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 sub import {
     my $class = shift;
