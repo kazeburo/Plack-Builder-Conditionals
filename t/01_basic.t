@@ -33,7 +33,7 @@ ok( header('X-Foo', '!', '100')->({  HTTP_X_BAA => '100' }) );
 ok( header('X-Foo',qr/\d+/)->({  HTTP_X_FOO => '100' }) );
 
 ok( browser(qr/MSIE/)->({ HTTP_USER_AGENT => 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0; Trident/4.0)' }) );
-ok( ! browser('!',qr!^Mozilla/4!)->({ HTTP_USER_AGENT => 'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)' }) );
+ok( browser('!',qr!^Mozilla/4!)->({ HTTP_USER_AGENT => 'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)' }) );
 
 
 
