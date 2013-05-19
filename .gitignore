@@ -11,3 +11,10 @@ MANIFEST.bak
 *.sw[po]
 *~
 MYMETA.*
+/Plack-Builder-Conditionals-*
+/.build
+/_build_params
+/Build
+!Build/
+!META.json
+!LICENSE
