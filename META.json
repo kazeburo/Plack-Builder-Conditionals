@@ -25,12 +25,6 @@
       ]
    },
    "prereqs" : {
-      "build" : {
-         "requires" : {
-            "ExtUtils::MakeMaker" : "6.36",
-            "Test::More" : "0"
-         }
-      },
       "configure" : {
          "requires" : {
             "CPAN::Meta" : "0",
@@ -51,6 +45,11 @@
             "List::MoreUtils" : "0",
             "Net::CIDR::Lite" : "0",
             "Plack" : "0.9941"
+         }
+      },
+      "test" : {
+         "requires" : {
+            "Test::More" : "0"
          }
       }
    },
