@@ -138,7 +138,6 @@ sub header {
 }
 
 sub browser {
-    my $header = shift;
     _match( "HTTP_USER_AGENT", @_ );
 }
 
