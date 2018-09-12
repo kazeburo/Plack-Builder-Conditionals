@@ -184,7 +184,7 @@ Plack::Builder::Conditionals - Plack::Builder extension
       $app;
   };
 
-  use Plack::Builder::Conditionals -prefx => 'c';
+  use Plack::Builder::Conditionals -prefix => 'c';
   # exports "c_match_if, c_addr, c_path, c_method, c_header, c_any, c_all"
 
 
@@ -258,7 +258,7 @@ return true if any condition return true
 
 =head1 EXPORT
 
-  use Plack::Builder::Conditionals -prefx => 'c';
+  use Plack::Builder::Conditionals -prefix => 'c';
   # exports "c_match_if, c_addr, c_path, c_method, c_header, c_any, c_all"
   
 you can add selected prefix to export functions
