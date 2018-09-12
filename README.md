@@ -21,7 +21,7 @@ Plack::Builder::Conditionals - Plack::Builder extension
         $app;
     };
 
-    use Plack::Builder::Conditionals -prefx => 'c';
+    use Plack::Builder::Conditionals -prefix => 'c';
     # exports "c_match_if, c_addr, c_path, c_method, c_header, c_any, c_all"
 
 
@@ -90,7 +90,7 @@ Plack::Builder::Conditionals is..
 
 # EXPORT
 
-    use Plack::Builder::Conditionals -prefx => 'c';
+    use Plack::Builder::Conditionals -prefix => 'c';
     # exports "c_match_if, c_addr, c_path, c_method, c_header, c_any, c_all"
     
 
